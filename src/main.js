@@ -13,9 +13,11 @@ import vuex from 'vuex'
 
 Vue.config.productionTip = false
 
-
+//使用iview
 Vue.use(iview)
+// vue-axios axios
 Vue.use(vueAxios,axios)
+//vuex
 Vue.use(vuex)
 /* eslint-disable no-new */
 new Vue({
