@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 //iview
 import iview from 'iview'
+// iview css
+import 'iview/dist/styles/iview.css'
 //axios  vue-axios
 import axios from 'axios'
 import vueAxios from 'vue-axios'
@@ -19,6 +21,7 @@ Vue.use(iview)
 Vue.use(vueAxios,axios)
 //vuex
 Vue.use(vuex)
+console.log(Vue,777)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
