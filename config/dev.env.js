@@ -3,5 +3,9 @@ const merge = require('webpack-merge')
 const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
-  NODE_ENV: '"development"'
+  //webpack.definePlugin 要求 字符串变量 单引号里面包双引号  变量替换成指定的内容
+  //变量用的时候 直接就是字符串
+  NODE_ENV: '"development"',
+  // BASE_URL:'"http://127.0.0.1:443"',
+  BASE_URL:'"http://112.74.45.191:8081"'
 })
