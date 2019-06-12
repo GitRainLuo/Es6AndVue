@@ -12,16 +12,25 @@ import axios from 'axios'
 import vueAxios from 'vue-axios'
 //vuex
 import vuex from 'vuex'
-
+//自定义函数库
+import fn from '@/utils/common'
+//拦截器
+import http from '@/http/interceptors'
+//echarts.js
+import echarts from 'echarts'
 Vue.config.productionTip = false
-
 //使用iview
 Vue.use(iview)
 // vue-axios axios
 Vue.use(vueAxios,axios)
 //vuex
 Vue.use(vuex)
-console.log(Vue,777)
+Vue.prototype.$fn = fn
+Vue.prototype.$Http = http
+Vue.use(echarts)
+console.log(echarts,8999)
+console.log(Vue.prototype,777)
+console.log(fn,666)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
