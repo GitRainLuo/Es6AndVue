@@ -18,6 +18,11 @@ import fn from '@/utils/common'
 import http from '@/http/interceptors'
 //echarts.js
 import echarts from 'echarts'
+//使用自定义指令
+import * as validate from '@/utils/inputValidate'
+console.log(validate,"directive")
+//store
+import store from '@/store/store'
 Vue.config.productionTip = false
 //使用iview
 Vue.use(iview)
@@ -35,6 +40,7 @@ console.log(fn,666)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
