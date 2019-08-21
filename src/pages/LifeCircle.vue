@@ -1,10 +1,9 @@
 <template>
     <div>
       <div>{{cd}}</div>
-      <marquee width=400 scrollamount=8 direction="left" hspace=20 vspace=20>
-        <a href=http://www.taobaojp5.tk><FONT face=楷体_GB2312 color=#ff0000 size=3><STRONG>带有超链接的跑马灯!点我试试？</STRONG></FONT></a>　
-        <a href=http://954872988.qzone.qq.com><FONT face=楷体_GB2312 color=#ff0000 size=3><STRONG>还有一条呢!点我试试?</STRONG></FONT></a>
-      </marquee>
+      <div>
+        <span v-for="item in list" :key="item.index">{{titleAndSubTitle(item)}}</span>
+      </div>
     </div>
 </template>
 
@@ -14,7 +13,14 @@
         name: "LifeCircle",
         data(){
           return{
-            test:"1"
+            test:"1",
+            list:[
+              {
+                title:"title",
+                subTitle:"subTitle",
+                content:""
+              }
+            ]
           }
         },
         created() {
@@ -28,6 +34,16 @@
             //alert("computed")
             this.test = "fff"
             return this.test
+          },
+          titleAndSubTitle(){
+            return function (item) {
+              let str = ""
+              str =  item.title
+              if(item.subTitle){
+                str += "-"+item.subTitle
+              }
+              return str
+            }
           }
         },
         watch:{
