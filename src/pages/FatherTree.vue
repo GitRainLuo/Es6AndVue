@@ -1,0 +1,96 @@
+<template>
+    <!--递归组件父组件-->
+    <div>
+      <tree-menus :list="list"></tree-menus>
+    </div>
+</template>
+
+<script>
+    import TreeMenus from "@/components/Tree"
+    export default {
+        name: "FatherTree",
+        components:{
+          TreeMenus
+        },
+        data(){
+          return{
+            list:[
+              {
+                name:"1",
+                checked:false,
+                isParent:true,
+                children:[
+                  {
+                    name:"1-1",
+                    checked:false,
+                    children:[]
+                  },
+                  {
+                    name:"1-2",
+                    checked:false,
+                    isParent:true,
+                    children:[
+                      {
+                        name:"1-2-1",
+                        checked:false,
+                        children:[]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                name:"2",
+                checked:false,
+                isParent:true,
+                children:[
+                  {
+                    name:"2-1",
+                    checked:false,
+                    children:[]
+                  },
+                  {
+                    name:"2-2",
+                    checked:false,
+                    children:[]
+                  },
+                  {
+                    name:"2-3",
+                    checked:false,
+                    isParent:true,
+                    children:[
+                      {
+                        name:"2-3-1",
+                        checked:false,
+                        isParent:true,
+                        children:[
+                          {
+                            name:"2-3-1-1",
+                            checked:false,
+                            children:[]
+                          },
+                          {
+                            name:"2-3-1-2",
+                            checked:false,
+                            children:[]
+                          }
+                        ]
+                      },
+                      {
+                        name:"2-3-2",
+                        checked:false,
+                        children:[]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+    }
+</script>
+
+<style lang="scss" scoped>
+
+</style>

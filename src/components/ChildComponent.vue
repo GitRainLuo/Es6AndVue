@@ -30,6 +30,9 @@
         props:{
             toChild:""
         },
+        mounted(){
+          console.log(this.$props.toChild+"---"+this.toChild)
+        },
         methods:{
           changeParentMsg(){
               this.$emit("update:msg",this.child.msg)

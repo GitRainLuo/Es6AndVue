@@ -102,6 +102,8 @@
       line-height: 30px;
       text-align: center;
       border: 1px solid #ccc;
+      background-color: #f0faff;
+      cursor: pointer;
     }
     li+li{
       margin-left: 1%;

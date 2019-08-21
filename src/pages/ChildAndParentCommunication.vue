@@ -1,7 +1,8 @@
 <template>
     <!--父组件-->
     <div class="container">
-      <child-component :toChild="parent.message" :msg.sync="parent.receiveData"></child-component>
+      <child-component :toChild="parent.message" @update:msg="parent.receiveData = $event"></child-component>
+      <!--<child-component :toChild="parent.message" :msg.sync="parent.receiveData"></child-component>-->
       <!--<child-component @msg="receiveMsg"></child-component>-->
       <h2>我是父组件</h2>
       <Form>
@@ -25,7 +26,7 @@
         data () {
             return {
                 parent:{
-                    message:"",
+                    message:"test",
                     receiveData:""
                 }
             }
