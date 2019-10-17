@@ -4,9 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 //iview
-import iview from 'iview'
+import ViewUi from 'view-design'
 // iview css
-import 'iview/dist/styles/iview.css'
+import 'view-design/dist/styles/iview.css'
 //axios  vue-axios
 import axios from 'axios'
 import vueAxios from 'vue-axios'
@@ -27,7 +27,7 @@ import store from '@/store/store'
 import i18n from '@/language'
 Vue.config.productionTip = false
 //使用iview
-Vue.use(iview)
+Vue.use(ViewUi)
 // vue-axios axios
 Vue.use(vueAxios,axios)
 //vuex

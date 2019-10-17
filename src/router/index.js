@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import iView from 'iview'
+import ViewUi from 'view-design'
 
 Vue.use(Router)
-Vue.use(iView)
+Vue.use(ViewUi)
 //路由懒加载
 // const Foo = () => Promise.resolve({ /* 组件定义对象 */ })
 //import('./Foo.vue') // 返回 Promise
@@ -355,10 +355,10 @@ const router = new Router({
  * 路由跳转加载进度条
  */
 router.beforeEach((to,from,next)=>{
-  iView.LoadingBar.start()
+  ViewUi.LoadingBar.start()
   next()
 })
 router.afterEach((to,from,next)=>{
-  iView.LoadingBar.finish()
+  ViewUi.LoadingBar.finish()
 })
 export default router

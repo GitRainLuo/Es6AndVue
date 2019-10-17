@@ -5,7 +5,7 @@
  * @Version:1.0
  */
 import Vue from 'vue'
-import iView from 'iview'
+import ViewUi from 'view-design'
 /**
  * 引入vue-i18n
  */
@@ -13,8 +13,8 @@ import VueI18n from 'vue-i18n'
 /**
  * 导入iview 自带语言包
  */
-import en from 'iview/dist/locale/en-US'
-import zh from 'iview/dist/locale/zh-CN'
+import en from 'view-design/dist/locale/en-US'
+import zh from 'view-design/dist/locale/zh-CN'
 /**
  * 导入 json语言包
  */
@@ -36,7 +36,7 @@ Vue.use(VueI18n)
 //   message
 // })
 //
-// Vue.use(iView, {
+// Vue.use(ViewUi, {
 //   i18n: (key, value) => i18n.t(key,value)
 // })
 // //上面这个比较重要 按照官网提供的方法 new Vue({ i18n }).$mount('#app'); 运行会出错 提示无法找到  _t 属性。 按照上述方法配置可以解决此问题(网上找的方法,亲测没问题)
