@@ -23,6 +23,8 @@ import * as validate from '@/utils/inputValidate'
 console.log(validate,"directive")
 //store
 import store from '@/store/store'
+//国际化 引入i18n
+import i18n from '@/language'
 Vue.config.productionTip = false
 //使用iview
 Vue.use(iview)
@@ -41,6 +43,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   components: { App },
   template: '<App/>'
 })
