@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import iView from 'iview'
 
 Vue.use(Router)
-
+Vue.use(iView)
 //路由懒加载
 // const Foo = () => Promise.resolve({ /* 组件定义对象 */ })
 //import('./Foo.vue') // 返回 Promise
@@ -13,6 +14,8 @@ Vue.use(Router)
 const index = resolve => require(['@/pages/index'],resolve)
 
 const cAndPCommunication = () => import('@/pages/ChildAndParentCommunication')
+
+const communication$attrs =()=>import('@/pages/CommunicationAttrs')
 
 const selectOptions =  () =>import('@/pages/SelectOptions')
 
@@ -67,6 +70,24 @@ const debounce =()=>import('@/pages/Debounce')
 const eventAgent =()=>import('@/pages/event/EventAgent')
 
 const render =()=>import('@/pages/Render')
+
+const autoTypeWriter = ()=>import('@/pages/AutoTypeWriter')
+
+const tabs = ()=>import('@/pages/TabsApplication')
+
+const language = ()=>import('@/pages/Language')
+
+const testOne =()=>import('@/pages/TestOne')
+
+const forceUpdate =()=>import('@/pages/ForceUpdate')
+
+const alive =()=>import('@/pages/KeepAlive')
+
+const aliveOne =()=>import('@/pages/AliveOne')
+
+const aliveTwo =()=>import('@/pages/AliveTwo')
+
+const editor =()=>import('@/pages/Editor')
 const router = new Router({
   routes:[
     {
@@ -79,6 +100,12 @@ const router = new Router({
       name:"ChildAndParent",
       title:"通信",
       component:cAndPCommunication
+    },
+    {
+      path:"/CommunicationAttrs",
+      name:"CommunicationAttrs",
+      title:"通信$attrs",
+      component: communication$attrs
     },
     {
       path:"/SelectOptions",
@@ -248,10 +275,75 @@ const router = new Router({
       name:"Render",
       title:"render",
       component:render
+    },
+    {
+      path:"/AutoTypeWriter",
+      name:"AutoTypeWriter",
+      title:"自动打字",
+      component:autoTypeWriter
+    },
+    {
+      path:"/TabsApplication",
+      name:"TabsApplication",
+      title:"标签",
+      component:tabs
+    },
+    {
+      path:"/Language",
+      name:"Language",
+      title:"国际化i18n",
+      component:language
+    },
+    {
+      path:"/TestOne",
+      name:"TestOne",
+      title:"测试一",
+      component:testOne
+    },
+    {
+      path:"/ForceUpdate",
+      name:"ForceUpdate",
+      title:"ForceUpdate",
+      component:forceUpdate
+    },
+    {
+      path:"/KeepAlive",
+      name:"KeepAlive",
+      title:"缓存",
+      meta:{
+        isAlive:true,
+        isCache:false
+      },
+      component:alive
+    },
+    {
+      path:"/AliveOne",
+      name:"AliveOne",
+      meta:{
+        isAlive:true,
+        isCache:false
+      },
+      component:aliveOne
+    },
+    {
+      path:"/AliveTwo",
+      name:"AliveTwo",
+      meta:{
+        isAlive:false
+      },
+      component:aliveTwo
+    },
+    {
+      path:"/Editor",
+      name:"Editor",
+      title:"富文本",
+      component:editor
     }
   ],
-  //滚动
+  //浏览器的popstate方法才会执行 有savedPosition
+  //滚动 在浏览器前进和后退的时候
   scrollBehavior (to, from, savedPosition) {
+    console.log(savedPosition,"position")
     if (savedPosition) {
       return savedPosition
     } else {
@@ -259,5 +351,14 @@ const router = new Router({
     }
   }
 })
-
+/**
+ * 路由跳转加载进度条
+ */
+router.beforeEach((to,from,next)=>{
+  iView.LoadingBar.start()
+  next()
+})
+router.afterEach((to,from,next)=>{
+  iView.LoadingBar.finish()
+})
 export default router
