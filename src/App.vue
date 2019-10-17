@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <router-view v-if="isRouterActive"/>
+    <keep-alive>
+      <router-view v-if="isRouterActive && $route.meta.isAlive"/>
+    </keep-alive>
+    <router-view v-if="isRouterActive && !$route.meta.isAlive"/>
   </div>
 </template>
 
@@ -36,7 +39,8 @@ export default {
 
 <style lang="scss">
   /*引入图标icon  https://icomoon.io/app/#/select挑选生成*/
-@import "styles/style.css";
+/*@import "styles/style.css";*/
+@import "styles/base";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
