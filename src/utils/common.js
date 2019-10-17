@@ -156,4 +156,81 @@ fn.getType = function (value) {
   return proType
 }
 
+/**
+ * 函数柯里化封装
+ * @param fn
+ * @param args
+ * @returns {Function}
+ */
+fn.currying = function (f,args = []) {
+  let _this = this
+  //原函数的参数长度
+  let len = f.length
+  return function () {
+    //取得所有参数
+    let rest = [...args,...arguments]
+    if(rest.length < len){
+      //递归
+      return fn.currying.call(_this,f,rest)
+    }
+    return f.apply(_this,rest)
+  }
+}
+
+/**
+ * 判断两是否相等(引用类型则判断内容)
+ * @param a
+ * @param b
+ * @returns {boolean}
+ */
+fn.isEqual = function (a,b) {
+  //严谨点的话用Object.prototype.toString.call(a) 来判断类型比较好
+  //此处用 typeof 简单判断
+  let typeA = typeof a,
+      typeB = typeof b
+  //类型不相同 直接返回false
+  if(typeA !== typeB){
+    return false
+  }
+  //number string null undefined boolean 与object (symbol)分开判断
+  //所谓的对象相等 一般是值相等 如果存储的地址不一样 值一样 也不相等 比如{}和[]
+  //null 的类型是object 判断object时撇开
+  if(typeA === "object" && typeA && typeB){
+    //object
+    //获取keys  数组  用for of
+    let keysA = Object.keys(a),
+        keysB = Object.keys(b)
+    //先判断长度 长度不一样 不相等
+    if(keysA.length !== keysB.length){
+      return false
+    }
+    //循环
+    for(let key of keysA){
+     //都有值 继续
+      if(a[key] && b[key]){
+        //判断一下类型是否相同 不同false
+        if(typeof a[key] === typeof b[key]){
+          //判断一下a[key]的类型 object就递归 不是就是直接判断
+          if(typeof a[key] === "object"){
+            //递归
+            this.isEqual(a[key],b[key])
+          }else {
+            //不相等 false
+            if(a[key] !== b[key]){
+              return false
+            }
+          }
+        }else {
+          return false
+        }
+      }else{
+        return false
+      }
+    }
+  }else {
+    //number string null undefined boolean
+    return a === b
+  }
+  return true
+}
 export default fn
