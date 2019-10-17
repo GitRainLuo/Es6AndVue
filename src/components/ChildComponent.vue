@@ -28,7 +28,14 @@
             }
         },
         props:{
-            toChild:""
+            toChild:{
+              type: String,
+              required: false,
+              default : ""
+              // validator:function (v) {
+              //   return false
+              // }
+            }
         },
         mounted(){
           console.log(this.$props.toChild+"---"+this.toChild)
