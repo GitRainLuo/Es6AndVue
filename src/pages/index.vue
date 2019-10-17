@@ -43,6 +43,7 @@
           //正则验证 是不是 path为"/"和"*"的 过滤掉
           let regExp = /^(\/|\*)$/
           let routes = this.$router.options.routes.filter(item =>item.path ? !regExp.test(item.path) : true)
+          routes = routes.filter(item=>item.title ? true :false)
           this.itemList = this.divideArr(routes)
 //          this.itemList = this.divideArr(this.itemList)
         },

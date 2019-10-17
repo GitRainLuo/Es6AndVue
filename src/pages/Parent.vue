@@ -2,7 +2,13 @@
     <div>
       <child>
         <!--具名插槽 // 作用域插槽-->
-        <template slot-scope="slotObj" slot="slotName">
+<!--        <template slot-scope="slotObj" slot="slotName">-->
+<!--          <p>所有的传递过来的是一个对象:{{slotObj}}</p>-->
+<!--          <p>msg:{{slotObj.msg}}</p>-->
+<!--          <p>msg1:{{slotObj.msg1}}</p>-->
+<!--        </template>-->
+        <!--#是v-slot:的缩写-->
+        <template  #slotName="slotObj">
           <p>所有的传递过来的是一个对象:{{slotObj}}</p>
           <p>msg:{{slotObj.msg}}</p>
           <p>msg1:{{slotObj.msg1}}</p>
@@ -41,6 +47,8 @@
         name: "Parent",
         components:{
           Child
+        },
+        mounted(){
         },
         data(){
           return{

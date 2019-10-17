@@ -3,19 +3,26 @@
     <div>
       <Table :data="table.data" :columns="table.columns" border stripe></Table>
       <Button @click="exportExcel">导出</Button>
-      <div>{{Math.random()}}</div>
+      <div>{{random}}</div>
       <Button @click="refresh">刷新</Button>
+      <Button @click="forceUpdate">forceUpdate</Button>
       <div>通过注入Inject获取父级provide的:{{injected}}</div>
       <Button @click="one">看看</Button>
+      <div>{{defaultV}}</div>
+      <Button @click="changeV">改变值</Button>
     </div>
 </template>
 
 <script>
     import Vue from 'vue'
+    import CopyContent from "@/components/CopyContent"
     export default{
         name:"TableExport",
         //注入reload
         inject:["reload","name"],
+        components:{
+          CopyContent
+        },
         data () {
             let _this = this
             return {
@@ -74,11 +81,25 @@
                     key:"birth",
                     title:"出生日期",
                     align:"center"
+                  },
+                  {
+                    key:"action",
+                    title:"操作",
+                    align:"center",
+                    render:(h,{row,column,index}) =>{
+                      return h(CopyContent,{
+                        props:{
+                          content:JSON.stringify(row)
+                        }
+                      })
+                    }
                   }
                 ]
               },
               //注入 使用父的provide
-              injected:this.name
+              injected:this.name,
+              defaultV:"default",
+              random:Math.random()
             }
         },
         mounted(){
@@ -124,7 +145,8 @@
 //            xhr.send(JSON.stringify(param))
             this.$Http.post(url,JSON.stringify(param),{headers:{"Content-Type":"application/json;charset=utf-8"}}).then((res)=>{
                 console.log(res,"信息返回")
-              console.log(res.data)
+              console.log(JSON.stringify(res.data))
+              window.location.href = res.data.data[0].saveUrl
             })
           },
           removeKey(data,key){
@@ -139,7 +161,19 @@
           //页面刷新
           refresh(){
             this.reload()
+          },
+          //利用forceUpdate 强制Vue实例重新渲染 强制更新数据和视图 触发updated钩子
+          //仅仅影响实例本身和插入插槽内容的子组件，而不是所有子组件。
+          forceUpdate(){
+            this.$forceUpdate()
+          },
+          //
+          changeV(){
+            this.defaultV = "我改变了"
           }
+        },
+        updated() {
+          console.log("我更新数据了")
         }
     }
 </script>
