@@ -4,8 +4,12 @@
     <div v-if="desOne">
       <Alert>{{desOne}}</Alert>
     </div>
-    <div>
-      <Select v-model="fruit">
+    <div style="margin-bottom: 300px">
+      <!--设置capture为true 下拉菜单展开是 点击跳转(或者是其他操作) 先收回下拉菜单 其他操作不会生效
+        capture 为false  其他操作立即生效
+        如果组件未设置 则会读取全局的iview配置
+       -->
+      <Select v-model="fruit" :capture="true">
         <Option v-for="item in fruitList" :value="item.code" :key="item.code">{{item.name}}</Option>
       </Select>
     </div>
@@ -40,7 +44,8 @@
                 code:"mango",
                 name:"芒果"
               }
-            ]
+            ],
+            date:this.$fn.dateFormat(new Date(),"yyyyMMdd hh:mm:ss")
           }
         },
         beforeRouteEnter(to,from,next){
