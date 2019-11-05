@@ -26,8 +26,15 @@ import store from '@/store/store'
 //国际化 引入i18n
 import i18n from '@/language'
 Vue.config.productionTip = false
-//使用iview
-Vue.use(ViewUi)
+//使用iview 设置iview全局配置
+Vue.use(ViewUi,{
+  capture:false,
+  size:"large",
+  select: {
+    arrow: 'md-arrow-dropdown',
+    arrowSize: 20
+  }
+})
 // vue-axios axios
 Vue.use(vueAxios,axios)
 //vuex
