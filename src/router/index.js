@@ -88,6 +88,10 @@ const aliveOne =()=>import('@/pages/AliveOne')
 const aliveTwo =()=>import('@/pages/AliveTwo')
 
 const editor =()=>import('@/pages/Editor')
+
+const pageA = ()=>import('@/pages/PageA')
+
+const pageB = ()=>import('@/pages/PageB')
 const router = new Router({
   routes:[
     {
@@ -338,6 +342,17 @@ const router = new Router({
       name:"Editor",
       title:"富文本",
       component:editor
+    },
+    {
+      path:"/PageA",
+      name:"PageA",
+      title:"PageA",
+      component:pageA
+    },
+    {
+      path:"/PageB",
+      name:"PageB",
+      component:pageB
     }
   ],
   //浏览器的popstate方法才会执行 有savedPosition
