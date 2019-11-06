@@ -22,8 +22,14 @@
         <li id="li4">Li04</li>
         <li id="li5">Li05</li>
       </ul>
+      <hr>
       <ul>
         <li v-for="item of itemCount" ref="item">{{item}}</li>
+      </ul>
+      <hr>
+      <!--vue 事件代理-->
+      <ul @click="eAgent">
+        <li v-for="(i,index) in 5" :data-index="index">{{i}}</li>
       </ul>
     </div>
 </template>
@@ -48,7 +54,17 @@
           console.log(this.$refs)
         },
         methods:{
-
+          eAgent(e){
+            console.log(e.target.nodeName)
+            if(e.target.nodeName.toLowerCase() === "li"){
+              const  index = parseInt(e.target.dataset.index)
+              console.log(index,"index")
+              this.doThings(index)
+            }
+          },
+          doThings(index){
+            alert(index)
+          }
         }
     }
 </script>
@@ -69,4 +85,11 @@
     margin-left: 1%;
   }
 }
+  #container:after{
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+  }
 </style>
