@@ -12,7 +12,7 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 //dist清除插件 每次build前会删除
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 const env = require('../config/prod.env')
 
@@ -35,7 +35,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    new CleanWebpackPlugin(['dist'],{}),//每次构建前都会删除dist
+    new CleanWebpackPlugin(),//每次构建前都会删除dist
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
