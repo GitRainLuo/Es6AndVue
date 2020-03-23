@@ -15,6 +15,11 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  //忽略打包
+  externals:{
+    'echarts':'echarts',//index引入echarts的配置
+    'wangeditor':'wangeditor'
+  },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
