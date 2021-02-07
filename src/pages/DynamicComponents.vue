@@ -5,6 +5,11 @@
       <li v-for="(item,index) in componentList" :key="index" class="component" @click="changeCom(item)">{{item.componentName}}</li>
     </ul>
     <div class="content">
+      <!--使用keep-alive-->
+<!--      <keep-alive>-->
+<!--        <component :is="curComponent"></component>-->
+<!--      </keep-alive>-->
+      <!--不使用keep-alive-->
       <component :is="curComponent"></component>
     </div>
   </div>

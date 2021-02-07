@@ -39,6 +39,13 @@ export const mixin3 = {
     console.log("mounted:" + this.$options.name)
   },
   methods: {},
+  activated() {
+    // 在使用了keep-alive才有 可以做一些操作
+    console.log("activated:" + this.$options.name)
+  },
+  deactivated() {
+    console.log("deactivated:" + this.$options.name)
+  },
   beforeDestroy() {
     console.log("beforeDestroy:" + this.$options.name )
   },
