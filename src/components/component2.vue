@@ -6,24 +6,18 @@
 </template>
 
 <script>
+  import {mixin3} from '@/utils/mixin'
   export default {
     name: "component2",
+    mixins: [mixin3],
     data() {
       return {}
     },
     created() {
-      console.log("created:" + this.$options.name)
     },
     mounted() {
-      console.log("mounted:" + this.$options.name)
     },
     methods: {},
-    beforeDestroy() {
-      console.log("beforeDestroy:" + this.$options.name )
-    },
-    destroyed(){
-      console.log("destroyed:" + this.$options.name )
-    }
   }
 </script>
 

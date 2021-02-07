@@ -30,3 +30,19 @@ export const mixin2 = {
     }
   }
 }
+
+export const mixin3 = {
+  created() {
+    console.log("created:" + this.$options.name)
+  },
+  mounted() {
+    console.log("mounted:" + this.$options.name)
+  },
+  methods: {},
+  beforeDestroy() {
+    console.log("beforeDestroy:" + this.$options.name )
+  },
+  destroyed(){
+    console.log("destroyed:" + this.$options.name )
+  }
+}
