@@ -9,7 +9,8 @@
               <div>传给父组件</div>
               <Input v-model="child.msg" placeholder="请输入传递给父组件的数据" @input="changeParentMsg"/>
               <div>接收父组件过来的值</div>
-              <Input v-model="toChild" placeholder="来自父组件"/>
+<!--              <Input v-model="toChild" placeholder="来自父组件"/>-->
+              <div>{{toChild}}</div>
             </FormItem>
           </Form>
         </div>
@@ -29,7 +30,7 @@
         },
         props:{
             toChild:{
-              type: String,
+              type: String | Object,
               required: false,
               default : ""
               // validator:function (v) {

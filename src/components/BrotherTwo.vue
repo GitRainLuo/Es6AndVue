@@ -29,7 +29,9 @@
           })
         },
         methods:{
-
+          testChildMethod(){
+            alert("调用成功")
+          }
         }
     }
 </script>

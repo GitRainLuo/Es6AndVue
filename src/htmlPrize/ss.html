@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  (function () {
+    let a = ["鱼香茄子 ",
+      "青椒肉丝 ",
+      "双椒肉丝 ",
+      "土豆烧鸡 ",
+      "宫保鸡丁 ",
+      "鱼香肉丝 ",
+      "红烧狮子头 ",
+      "尖椒豇豆小炒肉 ",
+      "青椒豆干回锅 ",
+      "盐煎肉 ",
+      "辣子鸡丁 ",
+      "火爆猪肝 ",
+      "麻辣兔丁 ",
+      "魔芋烧鸭 ",
+      "豆腐烧鱼块 ",
+      "木耳肉片 ",
+      "尖椒嘴尖 ",
+      "蒜苗豆腐干盐煎",
+      "清炒丝瓜",
+      "洋葱肉丝",
+      "酸辣莴笋肉丝",
+      "蒜苗土豆盐煎肉",
+      "肉沫茄子",
+      "芹菜豆腐干肉丝",
+      "油焖茄子",
+      "洋葱豆腐干盐煎肉",
+      "番茄炒蛋 ",
+      "酸辣土豆丝 ",
+      "青椒土豆丝 ",
+      "干煸苦瓜 ",
+      "豇豆炒茄子",
+      "烂肉豇豆"]
+    let arr = []
+    for (let i = 0; i < a.length; i++) {
+      let obj = {}
+      obj.id = i+1
+      obj.prizeName = a[i]
+      obj.prizeImg = "./image/default.png"
+      arr.push(obj)
+    }
+    console.log(JSON.stringify(arr))
+  })();
+
+</script>
+</body>
+</html>

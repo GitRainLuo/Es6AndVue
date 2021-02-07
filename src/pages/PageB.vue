@@ -19,13 +19,18 @@
         dataFromPageA: ""
       }
     },
+    beforeRouteEnter(to,from,next){
+      console.group("%c%s", "color:green", "beforeRouteEnter 路由进入前状态========PageB")
+      next()
+    },
     //在beforeCreated()钩子监听 mounted赋值
     beforeCreate() {
-      //console.group("%c%s", "color:green", "beforeCreated 创建前状态========PageB","on",)
+      //提前监听
       bus.$on("dataInfo", (data) => {
         bus.dataFromPageA = data
         console.log("data:"+data+"将data赋值给bus:"+bus.dataFromPageA)
       })
+      //console.group("%c%s", "color:green", "beforeCreated 创建前状态========PageB","on",)
       console.group("%c%s", "color:green", "beforeCreated 创建前状态========PageB","on",bus.dataFromPageA+"---data:"+this.dataFromPageA)
     },
     created() {

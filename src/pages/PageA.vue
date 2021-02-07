@@ -7,19 +7,27 @@
     <h3>这里是{{$options.name}}页面</h3>
     <Input v-model="dataToPageB"/>
     <Button @click="toPageB">跳转B页面并传值</Button>
+<!--    <image-preview :imageUrl="url" :isShow = true></image-preview>-->
+<!--    <Modal v-model="showBigImageModal" title="图片预览">-->
+<!--      <img :src="url" style="width: 100%"/>-->
+<!--    </Modal>-->
   </div>
 </template>
 
 <script>
+  import ImagePreview  from "@/components/ImagePreview"
   import bus from "../utils/bus"
 
   export default {
     name: "PageA",
     data() {
       return {
-        dataToPageB: ""
+        dataToPageB: "",
+        url:"http://isr-prod.oss-cn-shenzhen.aliyuncs.com/laserTv/1569484496676128408.jpeg",
+        showBigImageModal:true
       }
     },
+    components:{ImagePreview},
     beforeRouteEnter(to,from,next){
       console.group("%c%s", "color:red", "beforeRouteEnter========PageA")
       next()
@@ -58,6 +66,7 @@
       bus.$emit("dataInfo", this.dataToPageB)
     },
     destroyed() {
+      bus.$off("dataInfo")
       console.group("%c%s", "color:red", "destroyed 组件销毁完成状态========PageA")
     }
   }

@@ -25,6 +25,13 @@ console.log(validate,"directive")
 import store from '@/store/store'
 //国际化 引入i18n
 import i18n from '@/language'
+
+//引入vue-video-player
+import VideoPlayer from 'vue-video-player'
+
+import 'video.js/dist/video-js.css'
+require('vue-video-player/src/custom-theme.css')
+//import 'vue-video-player/src/customer-theme.css'
 Vue.config.productionTip = false
 //使用iview 设置iview全局配置
 Vue.use(ViewUi,{
@@ -42,6 +49,7 @@ Vue.use(vuex)
 Vue.prototype.$fn = fn
 Vue.prototype.$Http = http
 Vue.use(echarts)
+Vue.use(VideoPlayer)
 console.log(echarts,8999)
 console.log(Vue.prototype,777)
 console.log(fn,666)

@@ -1,7 +1,7 @@
 <template>
     <div>
       <brother-one></brother-one>
-      <brother-two></brother-two>
+      <brother-two ref="childTwo"></brother-two>
       <Form style="width: 60%;margin: 10px auto">
         <Input v-model="formData.name" placeholder="姓名" class="inp"/>
         <Input v-model="formData.age" placeholder="年龄" class="inp"/>
@@ -9,6 +9,7 @@
       </Form>
       <Button @click="resetFormData">清空</Button>
       <Button @click="destroyComponent">销毁组件</Button>
+      <Button @click="callChildMethod">调子组件方法</Button>
     </div>
 </template>
 
@@ -43,6 +44,11 @@
           },
           destroyComponent(){
             this.$destroy()
+          },
+          //调子组件的方法
+          callChildMethod(){
+            console.log(this.$refs.childTwo,777)
+            this.$refs.childTwo.testChildMethod()
           }
         }
     }

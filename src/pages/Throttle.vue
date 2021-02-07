@@ -118,7 +118,7 @@
             alert("5秒类不再重复提交数据")
           },
           submitNoTwice:_throttle(function () {
-            this.submit()
+            this.sutbmit()
           },5000),
           test(e){
             console.log(e.target.tagName,77777777)

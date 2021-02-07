@@ -7,6 +7,7 @@
       <Button @click="refresh">刷新</Button>
       <Button @click="forceUpdate">forceUpdate</Button>
       <div>通过注入Inject获取父级provide的:{{injected}}</div>
+      <div>通过注入Inject获取父级provide的可以获取变化的最新的值:{{myChangeData()}}</div>
       <Button @click="one">看看</Button>
       <div>{{defaultV}}</div>
       <Button @click="changeV">改变值</Button>
@@ -19,7 +20,7 @@
     export default{
         name:"TableExport",
         //注入reload
-        inject:["reload","name"],
+        inject:["reload","name","myChangeData"],
         components:{
           CopyContent
         },

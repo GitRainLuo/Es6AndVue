@@ -31,6 +31,8 @@
               return {}
             },
             props:["name"],
+            //默认 组件内未被注册的属性将作为普通html元素属性被渲染
+            //false 没有在props里面的属性不渲染成html元素属性但是可以获取到
             inheritAttrs: false,
             created(){
               console.log(this.$attrs,"子组件")

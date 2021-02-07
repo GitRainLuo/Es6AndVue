@@ -28,6 +28,10 @@
             //   return
             // }
             // this.barrage = ""
+            if(!this.barrage){
+              this.$Message.warning("请随便输入点内容")
+              return
+            }
             //创建span
             let oSpan = document.createElement("span")
             let con = document.getElementById("barrage-container")
@@ -47,6 +51,8 @@
               oSpan.style.left = tmp - 10 +"px"
               if(oSpan.style.left.substring(0,oSpan.style.left.indexOf("px"))*1 + oSpan.offsetWidth <= 0){
                 oSpan.style.right = 0
+                //移除掉
+                con.removeChild(oSpan)
                 clearInterval(timer)
               }
             },150)
@@ -69,7 +75,8 @@
     }
     .barrage-container{
       position: relative;
-      min-height: 200px;
+      /*包含上下边框2px*/
+      min-height: 202px;
       border: 1px solid #ccc;
       overflow: hidden;
     }

@@ -1,6 +1,6 @@
 <template>
     <div>
-      <child>
+      <child :todos="todos">
         <!--具名插槽 // 作用域插槽-->
 <!--        <template slot-scope="slotObj" slot="slotName">-->
 <!--          <p>所有的传递过来的是一个对象:{{slotObj}}</p>-->
@@ -37,6 +37,10 @@
             <span>菜单6</span>
           </div>
         </template>
+        <template #todoList="slotProps">
+          <span v-if="slotProps.todo.isComplete">✓</span>
+          <span>{{slotProps.todo.text}}</span>
+        </template>
       </child>
     </div>
 </template>
@@ -52,7 +56,28 @@
         },
         data(){
           return{
-
+            todos: [
+              {
+                id: 0,
+                text: 'todo0',
+                isComplete: false
+              },
+              {
+                text: 'todo1',
+                id: 1,
+                isComplete: true
+              },
+              {
+                text: 'todo2',
+                id: 2,
+                isComplete: false
+              },
+              {
+                text: 'todo3',
+                id: 3,
+                isComplete: false
+              }
+            ]
           }
         }
     }
