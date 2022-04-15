@@ -1,7 +1,7 @@
 <template>
     <!--父组件-->
     <div class="container">
-      <child-component :toChild="parent.message" @update:msg="parent.receiveData = $event" :key="refreshKey"></child-component>
+      <child-component :toChild="parent.message" @update:msg="parent.receiveData = $event" :key="refreshKey" v-model="toggleData"></child-component>
       <!--<child-component :toChild="parent.message" :msg.sync="parent.receiveData"></child-component>-->
       <!--<child-component @msg="receiveMsg"></child-component>-->
       <h2>我是父组件</h2>
@@ -11,6 +11,7 @@
           <Input v-model="parent.receiveData" placeholder="我接收到的子组件的数据"/>
           <div>传递给子组件的值</div>
           <Input v-model="parent.message" placeholder="我传递给子组件"/>
+          <div>当前toggle: {{ toggleData }}</div>
         </FormItem>
       </Form>
       <Button @click="refreshComp">强制刷新</Button>
@@ -31,7 +32,8 @@
                     receiveData:"",
                 },
                 //刷新组件的key
-                refreshKey:0
+                refreshKey:0,
+                toggleData: true
             }
         },
         mounted(){

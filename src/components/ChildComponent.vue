@@ -11,6 +11,7 @@
               <div>接收父组件过来的值</div>
 <!--              <Input v-model="toChild" placeholder="来自父组件"/>-->
               <div>{{toChild}}</div>
+              <Button @click="handleChange">改变</Button>
             </FormItem>
           </Form>
         </div>
@@ -28,6 +29,10 @@
                 }
             }
         },
+        model: {
+          prop: 'toggle',
+          event: 'changeToggle'
+        },
         props:{
             toChild:{
               type: String | Object,
@@ -36,15 +41,21 @@
               // validator:function (v) {
               //   return false
               // }
+            },
+            toggle: {
+              type: Boolean
             }
         },
         mounted(){
-          console.log(this.$props.toChild+"---"+this.toChild)
+          console.log(this.$props.toChild+"---"+this.toChild+ '-----'+ this.toggle)
         },
         methods:{
           changeParentMsg(){
               this.$emit("update:msg",this.child.msg)
 //            this.$emit("msg",this.child.msg)
+          },
+          handleChange() {
+            this.$emit('changeToggle', !this.toggle)
           }
         }
     }
